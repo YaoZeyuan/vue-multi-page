@@ -29,10 +29,10 @@ vue多页面实践之路
 
     3.  安装vue-cli
         1.  切换到待初始化vue项目的目录下, 执行命令 `npm install vue-cli`
-            [npm-install-vue-cli](./img/npm-install-vue-cli.png)
+            ![npm-install-vue-cli](./img/npm-install-vue-cli.png)
     4.  创建基础的vue项目(vue2.0 + webpack)
         执行命令：`vue init webpack muilt-page-vue` ( 创建一个名为muilt-page-vue, 以webpack模版作为基底的vue项目, 更多选项参见[vue-cli的说明文档](https://github.com/vuejs/vue-cli))
-        [init-muilt-page-vue-project](./img/init-muilt-page-vue-project.png)
+        ![init-muilt-page-vue-project](./img/init-muilt-page-vue-project.png)
         这里直接使用的默认选项，没有添加各种扩展的代码测试工具(普通开发基本用不着)
     5.  初始化vue项目
         正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）
