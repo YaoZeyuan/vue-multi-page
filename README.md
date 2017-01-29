@@ -35,4 +35,6 @@ vue多页面实践之路
         [init-muilt-page-vue-project](./img/init-muilt-page-vue-project.png)
         这里直接使用的默认选项，没有添加各种扩展的代码测试工具(普通开发基本用不着)
     5.  初始化vue项目
-        正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）, `npm run dev`(进入vue的dev开发模式)
+        正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）
+    6.  执行到这一步之后，一个基础的vue单页面项目就已经建好了，如果直接运行`npm run dev`的话，就可以直接进行开发工作。但是因为我们要做的是多页面项目，所以下边就要开始各种魔改了
+
