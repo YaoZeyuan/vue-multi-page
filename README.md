@@ -51,9 +51,14 @@ vue多页面实践之路
         3.  关闭safe-write功能
             这个选项会让WebStrom保存之后不直接写到原文件里，导致webpack dev模式监听不到文件变化，从而也就不会重新编代码，只有重新运行`npm run dev`才能加载新代码，非常麻烦
             所以一定要关掉它
+
+            方法：Setting中搜索 `safe write`, 在System Setting里
+
             ![webstrom-config-close-safe-write](./img/webstrom-config-close-safe-write.png)
 
         4.  添加debug功能
             我们在测试webpack功能的时候(例如写插件)需要单步执行命令，这时候就需要进行一下配置
-            ![webstrom-config-add-debug-config-step-1](./img/webstrom-config-add-debug-config-step-1.png)
-            ![webstrom-config-add-debug-config-step-2](./img/webstrom-config-add-debug-config-step-2.png)
+            1.
+                ![webstrom-config-add-debug-config-step-1](./img/webstrom-config-add-debug-config-step-1.png)
+            2.
+                ![webstrom-config-add-debug-config-step-2](./img/webstrom-config-add-debug-config-step-2.png)
