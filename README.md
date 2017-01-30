@@ -37,4 +37,23 @@ vue多页面实践之路
     5.  初始化vue项目
         正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）
     6.  执行到这一步之后，一个基础的vue单页面项目就已经建好了，如果直接运行`npm run dev`的话，就可以直接进行开发工作。但是因为我们要做的是多页面项目，所以下边就要开始各种魔改了
+    7.  WebStrom配置
+        在修改代码之前要先处理下WebStrom的配置问题，否则代码改起来会比较别扭
+        1.  将js模式改为ES6模式，否则的话各种报错，没有import方法etc，你懂得
+            ![webstrom-config-js-es6-mode](./img/webstrom-config-js-es6-mode.png)
+        2.  关闭分号缺失提示
+            vue-cli生成的模版里是不带分号的，所以需要在WebStrom里关掉分号缺失自动报错功能
 
+            方法为：Setting中搜索unterminated ，去掉打钩
+
+            ![webstrom-config-unset-unterminated](./img/webstrom-config-unset-unterminated.png)
+
+        3.  关闭safe-write功能
+            这个选项会让WebStrom保存之后不直接写到原文件里，导致webpack dev模式监听不到文件变化，从而也就不会重新编代码，只有重新运行`npm run dev`才能加载新代码，非常麻烦
+            所以一定要关掉它
+            ![webstrom-config-close-safe-write](./img/webstrom-config-close-safe-write.png)
+
+        4.  添加debug功能
+            我们在测试webpack功能的时候(例如写插件)需要单步执行命令，这时候就需要进行一下配置
+            ![webstrom-config-add-debug-config-step-1](./img/webstrom-config-add-debug-config-step-1.png)
+            ![webstrom-config-add-debug-config-step-2](./img/webstrom-config-add-debug-config-step-2.png)
