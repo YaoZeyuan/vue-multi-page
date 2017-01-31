@@ -166,4 +166,4 @@ vue多页面实践之路
             1.  将生成html页面的plugin从之前的单入口HtmlWebpackPlugin()改为我们使用generate_html_template_list插件生成的一系列HtmlWebpackPlugin
             2.  添加map.json生成插件
             3.  其他修改详见文件内容
-        6.
+        6.  添加项目代码
