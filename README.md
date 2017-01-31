@@ -73,3 +73,49 @@ vue多页面实践之路
             3.  ./build/plugin/webpack
                 用于存放webpack插件，输出map.json文件
         2.  目录说明
+                ```
+                |--build  基础配置文件
+                |----plugin   项目插件,目前用于存放webpack的map.json生成插件
+                |----build.js `npm run build` 的实际执行文件
+                |----dev.client.js
+                |----dev.server.js  `npm run dev`的实际执行文件
+                |----utils.js 工具js, 存放通用的工具代码, 例如: 根据项目配置生成入口文件列表
+                |----webpack.base.conf.js webpack基础配置
+                |----webpack.dev.conf.js  webpack开发环境配置
+                |----webpack.prod.conf.js webpack线上环境配置
+                |--config 配置目录
+                |----extend.conf.js 项目配置目录, 添加新项目时需要在该文件中进行登记
+                |----index.js       对外暴露出的公共接口,项目主配置通过该文件对外传递
+                |----dev.env.js     开发环境配置
+                |----prod.env.js    线上环境配置
+                |--dist 项目打包地址,打包后的代码会存放在该目录内
+                |----growth_cp  项目名称
+                |--------0.0.4  项目版本号，即.hgtags中最后一行的tag值 或 git的tag值
+                |------------font 字体文件
+                |------------img  图片文件
+                |------------media  媒体文件
+                |------------       font/img/media是由/build/build.js直接从/src/assets中复制过来，本身并没有经过其他处理. 需要注意
+                |------------html html文件，仅用于查看结果
+                |----------------signin 签到项目的html文件所在目录
+                |------------js js文件
+                |----------------signin_[chunk_hash]  siginin项目的js文件目录, 在目录名中添加hash值, 避免文件重复
+                |--------------------signin.js  实际编译出来的siginin项目的js文件,使用项目原名，方便线上查找故障文件。
+                |--------------------           目录命名规则在/build/webpack.prod.conf.js文件中，修改后需要在/build/plugin/webpack/create_map_json.js中进行相应的修改, 以确保正常生成map.json文件
+                |--map  项目map.json存放地址, 项目的map.json生成后存放在该目录内
+                |--src  项目目录，所有相关文件都在在里
+                |----asserts  静态资源目录
+                |--------font 静态资源-字体
+                |--------img  静态资源-图片
+                |--------media  静态资源-其他媒体资源
+                |--components 公用组件 当项目中有公用组件时, 可以存放在该目录下
+                |--lib  公用类库 当项目中有公用类库时, 可以存放在该目录下
+                |--utils  通用工具方法 当项目中有通用的工具方法时, 可以存放在该目录下
+                |--view 项目目录
+                |----signin 签到项目目录
+                |--------index.js 入口js文件, 【该名称为强制命名,使用其他名称会导致项目无法浏览】
+                |--------index.html html根模版文件. vue项目只有一张启动页面，即该页面。【该名称为强制命名,使用其他名称会导致项目无法浏览】
+                |--------router.js 路由js文件. 项目使用vue-router，使用该文件作为路由文件
+                |--------main.vue 入口vue文件
+                |--------lib 项目所依赖的库文件
+                |--------common 签到项目通用组件目录, 如果有组件只在签到项目中使用，则存放在该目录下
+                ```
