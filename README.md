@@ -154,3 +154,5 @@ vue多页面实践之路
             2.  修改`./config/index.js`内容，引入并对外发布`./config/project.js`
                 1.  index.js的内容解释见文件注释
                 2.  修改本地调试端口的话可以在index.js中修改dev.port的值(默认的8080已经够用了, 所以就没再加配置项)
+        2.  添加生成html模版的插件
+            1.  添加一个插件，用于根据项目配置为webpack生成html配置模版
