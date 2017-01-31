@@ -144,6 +144,12 @@ vue多页面实践之路
         这里我们以demo(demo),签到(signin),知乎(zhihu)三个项目为例
         1.  创建项目目录配置js
             1.  创建`./config/project.js`
-                1.  该文件用于在项目中注册页面，后期添加新页面的时候只要在`./src/view`里创建一个文件夹，在`./config/project.js`里添加一条key=>value记录就可以了
-                2.  具体内容解释见文件内容,
+                1.  在project配置中添加三个项目的【项目名】 => 【项目地址配置】
+                2.  原理：
+                    1.  该文件用于在项目中注册页面，后期添加新页面的时候只要在`./src/view`里创建一个文件夹，在`./config/project.js`里添加一条key=>value记录就可以了
+                3.  配置项目名，tag获取方法(git/hg)
+                2.  具体解释见文件注释,
             2.  修改`./config/index.js`内容，引入并对外发布`./config/project.js`
+                1.  index.js的内容解释见文件注释
+                2.  修改本地调试端口的话可以在index.js中修改dev.port的值(默认的8080已经够用了, 所以就没再加配置项)
+        2.
