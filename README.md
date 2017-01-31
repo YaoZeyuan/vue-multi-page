@@ -158,4 +158,9 @@ vue多页面实践之路
             1.  添加一个插件，用于根据项目配置为webpack生成html配置模版
         3.  修改webpack.base.conf.js配置
             1.  将entry由单入口修改为我们设置的`config.project_config.project`多入口即可
-        4.
+        4.  修改webpack.dev.conf.js配置
+            1.  将生成html页面的plugin从之前的单入口HtmlWebpackPlugin()改为我们使用generate_html_template_list插件生成的一系列HtmlWebpackPlugin
+            2.  详见文件内容
+        5.  修改webpack.prod.conf.js配置
+            1.  将生成html页面的plugin从之前的单入口HtmlWebpackPlugin()改为我们使用generate_html_template_list插件生成的一系列HtmlWebpackPlugin
+            2.  详见文件内容
