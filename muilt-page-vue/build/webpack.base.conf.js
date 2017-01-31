@@ -11,9 +11,7 @@ var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 module.exports = {
-  entry: {
-    app: './src/main.js'
-  },
+  entry: config.project_config.project, // 根据不同的入口生成对应的app.js
   output: {
     path: config.build.assetsRoot,
     publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
@@ -51,6 +49,7 @@ module.exports = {
         loader: 'json'
       },
       {
+        // @todo 静态资源处理器，具体功能待测试
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url',
         query: {
@@ -59,6 +58,7 @@ module.exports = {
         }
       },
       {
+        // @todo 静态资源处理器，具体功能待测试
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url',
         query: {

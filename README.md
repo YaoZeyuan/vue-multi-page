@@ -156,3 +156,6 @@ vue多页面实践之路
                 2.  修改本地调试端口的话可以在index.js中修改dev.port的值(默认的8080已经够用了, 所以就没再加配置项)
         2.  添加生成html模版的插件
             1.  添加一个插件，用于根据项目配置为webpack生成html配置模版
+        3.  修改webpack.base.conf.js配置
+            1.  将entry由单入口修改为我们设置的`config.project_config.project`多入口即可
+        4.
