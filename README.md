@@ -154,8 +154,9 @@ vue多页面实践之路
             2.  修改`./config/index.js`内容，引入并对外发布`./config/project.js`
                 1.  index.js的内容解释见文件注释
                 2.  修改本地调试端口的话可以在index.js中修改dev.port的值(默认的8080已经够用了, 所以就没再加配置项)
-        2.  添加生成html模版的插件
-            1.  添加一个插件，用于根据项目配置为webpack生成html配置模版
+        2.  添加插件
+            1.  添加`./build/plugin/webpack/generate_html_template_list`插件，用于根据项目配置为webpack生成html配置模版
+            2.  添加`./build/plugin/webpack/generate_map_json`插件，用于在编译好js后生成一份map.json，方便前端调用
         3.  修改webpack.base.conf.js配置
             1.  将entry由单入口修改为我们设置的`config.project_config.project`多入口即可
         4.  修改webpack.dev.conf.js配置
@@ -163,4 +164,6 @@ vue多页面实践之路
             2.  详见文件内容
         5.  修改webpack.prod.conf.js配置
             1.  将生成html页面的plugin从之前的单入口HtmlWebpackPlugin()改为我们使用generate_html_template_list插件生成的一系列HtmlWebpackPlugin
-            2.  详见文件内容
+            2.  添加map.json生成插件
+            3.  其他修改详见文件内容
+        6.
