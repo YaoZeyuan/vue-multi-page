@@ -13,7 +13,7 @@ vue多页面实践之路
         可能是目前最好用的Windows终端，用户体验堪比Ubuntu自带的Terminal
     3.  VSCode
         有固态硬盘支持的情况下Windows平台中最好用的文本编辑器
-    4.  WebStrom
+    4.  WebStorm
         js开发必备ide，具体设置后边会详细介绍
 
 
@@ -37,33 +37,39 @@ vue多页面实践之路
     5.  初始化vue项目
         正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）
     6.  执行到这一步之后，一个基础的vue单页面项目就已经建好了，如果直接运行`npm run dev`的话，就可以直接进行开发工作。但是因为我们要做的是多页面项目，所以下边就要开始各种魔改了
-    7.  WebStrom配置
-        在修改代码之前要先处理下WebStrom的配置问题，否则代码改起来会比较别扭
+    7.  WebStorm配置
+        在修改代码之前要先处理下WebStorm的配置问题，否则代码改起来会比较别扭
         1.  将js模式改为ES6模式，否则的话各种报错，没有import方法etc，你懂得
-            ![webstrom-config-js-es6-mode](./img/webstrom-config-js-es6-mode.png)
+            ![webstorm-config-js-es6-mode](./img/webstorm-config-js-es6-mode.png)
         2.  关闭分号缺失提示
-            vue-cli生成的模版里是不带分号的，所以需要在WebStrom里关掉分号缺失自动报错功能
+            vue-cli生成的模版里是不带分号的，所以需要在WebStorm里关掉分号缺失自动报错功能
 
             方法为：Setting中搜索unterminated ，去掉打钩
 
-            ![webstrom-config-unset-unterminated](./img/webstrom-config-unset-unterminated.png)
+            ![webstorm-config-unset-unterminated](./img/webstorm-config-unset-unterminated.png)
 
         3.  关闭safe-write功能
-            这个选项会让WebStrom保存之后不直接写到原文件里，导致webpack dev模式监听不到文件变化，从而也就不会重新编代码，只有重新运行`npm run dev`才能加载新代码，非常麻烦
+            这个选项会让WebStorm保存之后不直接写到原文件里，导致webpack dev模式监听不到文件变化，从而也就不会重新编代码，只有重新运行`npm run dev`才能加载新代码，非常麻烦
             所以一定要关掉它
 
             方法：Setting中搜索 `safe write`, 在System Setting里
 
-            ![webstrom-config-close-safe-write](./img/webstrom-config-close-safe-write.png)
+            ![webstorm-config-close-safe-write](./img/webstorm-config-close-safe-write.png)
 
         4.  添加debug功能
             我们在测试webpack功能的时候(例如写插件)需要单步执行命令，这时候就需要进行一下配置
 
             1.
-                ![webstrom-config-add-debug-config-step-1](./img/webstrom-config-add-debug-config-step-1.png)
+                ![webstorm-config-add-debug-config-step-1](./img/webstorm-config-add-debug-config-step-1.png)
 
             2.
-                ![webstrom-config-add-debug-config-step-2](./img/webstrom-config-add-debug-config-step-2.png)
+                ![webstorm-config-add-debug-config-step-2](./img/webstorm-config-add-debug-config-step-2.png)
+        5.  【可选】打开node.js的库函数提示
+
+            WebStorm支持对node.js自带的库函数进行提示,在设置中搜索`coding assistance`点击`enable`即可
+
+            [webstorm-config-enable-coding-assistance](./img/webstorm-config-enable-coding-assistance.png)
+
     8.  创建基础目录结构
         1.  新加目录(以项目目录为当前目录)
             1.  ./dist
@@ -135,4 +141,9 @@ vue多页面实践之路
             |----------lib 项目所依赖的库文件
             ```
     9.  修改默认配置代码
-        这里我们以签到(signin),知乎(zhihu)两个项目为例
+        这里我们以demo(demo),签到(signin),知乎(zhihu)三个项目为例
+        1.  创建项目目录配置js
+            1.  创建`./config/project.js`
+                1.  该文件用于在项目中注册页面，后期添加新页面的时候只要在`./src/view`里创建一个文件夹，在`./config/project.js`里添加一条key=>value记录就可以了
+                2.  具体内容解释见文件内容,
+            2.  修改`./config/index.js`内容，引入并对外发布`./config/project.js`
