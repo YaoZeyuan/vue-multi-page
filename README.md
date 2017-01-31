@@ -58,7 +58,18 @@ vue多页面实践之路
 
         4.  添加debug功能
             我们在测试webpack功能的时候(例如写插件)需要单步执行命令，这时候就需要进行一下配置
+
             1.
                 ![webstrom-config-add-debug-config-step-1](./img/webstrom-config-add-debug-config-step-1.png)
+
             2.
                 ![webstrom-config-add-debug-config-step-2](./img/webstrom-config-add-debug-config-step-2.png)
+    8.  创建基础目录结构
+        1.  新加目录(以项目目录为当前目录)
+            1.  ./dist
+                用于对外发布编译后的文件
+            2.  ./map
+                输出map.json，控制文件版本(后边会有说明)
+            3.  ./build/plugin/webpack
+                用于存放webpack插件，输出map.json文件
+        2.  目录说明
