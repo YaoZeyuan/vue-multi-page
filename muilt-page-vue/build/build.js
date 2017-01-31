@@ -19,9 +19,10 @@ var spinner = ora('building for production...')
 spinner.start()
 
 var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
+// 利用命令将静态资源复制到目标文件夹中去
 rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
-cp('-R', 'static/*', assetsPath)
+cp('-R', 'src/assets/', assetsPath);// 注意在这里要将静态资源文件地址换成我们配置的地址
 
 webpack(webpackConfig, function (err, stats) {
   spinner.stop()
