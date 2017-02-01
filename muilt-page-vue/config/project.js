@@ -8,8 +8,7 @@ let fs = require("fs")
 // let tag_content = fs.readFileSync("./.hgtags", 'utf8') // 获取hgtags的内容
 // let version = tag_content.trim().split(' ').pop() // 直接trim后取最后一行，以空格分隔获取最新版本号
 // git项目获取版本号
-let tag_content = fs.readFileSync("./.hgtags", 'utf8') // 获取hgtags的内容
-let version = tag_content.trim().split(' ').pop() // 直接trim后取最后一行，以空格分隔获取最新版本号
+let version = fs.readdirSync('./.git/refs/tags').pop().trim()// 获取版本库最新tag值
 let name = 'multi_vue_demo' // 项目名，提取出来以方便dev环境使用，否则会出现undefined = =
 
 module.exports = {
