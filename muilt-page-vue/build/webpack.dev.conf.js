@@ -3,7 +3,7 @@ var webpack = require('webpack')
 var merge = require('webpack-merge')
 var utils = require('./utils')
 var baseWebpackConfig = require('./webpack.base.conf')
-var generate_html_template_list = require('./plugin/webpack/generate_html_template_list')
+var html_template_generator = require('./plugin/webpack/generate_html_template_list')
 var env = config.dev.env
 var FriendlyErrors = require('friendly-errors-webpack-plugin')
 
@@ -27,5 +27,5 @@ module.exports = merge(baseWebpackConfig, {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
-    ].concat(generate_html_template_list(env)).push(new FriendlyErrors())
+    ].concat(html_template_generator.generate_html_template_list(env)).push(new FriendlyErrors())
 })

@@ -5,8 +5,8 @@ var webpack = require('webpack')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var generate_html_template_list = require('./plugin/webpack/generate_html_template_list')
-var generate_map_json = require('./plugin/webpack/generate_map_json')
+var html_template_generator = require('./plugin/webpack/generate_html_template_list')
+var map_json_generator = require('./plugin/webpack/generate_map_json')
 var env = config.build.env
 
 var webpackConfig = merge(baseWebpackConfig, {
@@ -43,7 +43,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         new webpack.optimize.OccurrenceOrderPlugin(),
         // 用于将css单独打包到一个文件内，但因为现在不单独生成css，所以可以注掉
         new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
-    ].concat(generate_html_template_list(env)).concat([
+    ].concat(html_template_generator.generate_html_template_list(env)).concat([
         // 只生成一个js文件
         // split vendor js into its own file
         //new webpack.optimize.CommonsChunkPlugin({
@@ -66,7 +66,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         //  chunks: ['vendor']
         //}),
         // map.json插件
-        generate_map_json({
+        map_json_generator.generate_map_json({
             // output file path, relative to process.cwd()
             output: './map/' + config.project_config.name + '/map-' + config.project_config.version + '.json',
             assetsPath: config.build.assetsPublicPath, // 文件前缀地址
