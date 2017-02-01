@@ -9,7 +9,7 @@ var FriendlyErrors = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
+    //baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
 
 module.exports = merge(baseWebpackConfig, {
@@ -27,5 +27,5 @@ module.exports = merge(baseWebpackConfig, {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
-    ].concat(html_template_generator.generate_html_template_list(env)).push(new FriendlyErrors())
+    ].concat(html_template_generator.generate_html_template_list(env)).concat([new FriendlyErrors()]) // 不能用push,push的返回值是数组的长度，不是数组本身。。。
 })

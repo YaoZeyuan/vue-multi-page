@@ -19,7 +19,13 @@ var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
-    quiet: true
+    quiet: false,
+    stats: {
+        colors: true,
+        chunks: false,
+        inline: true,// 当源代码改变时，自动刷新页面，通过强制刷新来避免代码修改后页面没跟着热加载的情况
+    },
+    progress:true
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
