@@ -35,7 +35,11 @@ vue多页面实践之路
         ![init-muilt-page-vue-project](./img/init-muilt-page-vue-project.png)
         这里直接使用的默认选项，没有添加各种扩展的代码测试工具(普通开发基本用不着)
     5.  初始化vue项目
-        正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）
+        1.  正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）
+        2.  安装vue-router/vue-resource
+            1.  正常项目肯定会用到这两个功能(vue-router => 路由， vue-resource => http请求)
+            2.  执行`npm install vue-router vue-resource --save`
+        3.  安装其他依赖(例如[element-ui](http://element.eleme.io/#/zh-CN)组件etc，这里随便安装就可以了)
     6.  执行到这一步之后，一个基础的vue单页面项目就已经建好了，如果直接运行`npm run dev`的话，就可以直接进行开发工作。但是因为我们要做的是多页面项目，所以下边就要开始各种魔改了
     7.  WebStorm配置
         在修改代码之前要先处理下WebStorm的配置问题，否则代码改起来会比较别扭
