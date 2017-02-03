@@ -170,4 +170,15 @@ vue多页面实践之路
             1.  将生成html页面的plugin从之前的单入口HtmlWebpackPlugin()改为我们使用generate_html_template_list插件生成的一系列HtmlWebpackPlugin
             2.  添加map.json生成插件
             3.  其他修改详见文件内容
-        6.  添加项目代码
+    10. 执行项目
+        到这一步就可以编译具体项目了
+        1.  本地测试
+            1.  执行命令`npm run dev`
+            2.  需要注意的是由于是多页面vue，所以执行该命令后需要手工输入index.html地址才能进入调试页面，如图所示
+
+                [run-dev-index-html-address-demo](./img/run-dev-index-html-address-demo.png)
+
+                红框部分即为demo、signin、zhihu对应的本地调试地址(http://localhost:8080/multi_vue_demo/0.0.2/html/demo/index.html、http://localhost:8080/multi_vue_demo/0.0.2/html/signin/index.html、http://localhost:8080/multi_vue_demo/0.0.2/html/zhihu/index.html )
+
+        2.  线上编译
+            `npm run build`
