@@ -23,6 +23,7 @@ var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirect
 rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
 cp('-R', 'src/assets/', assetsPath);// 注意在这里要将静态资源文件地址换成我们配置的地址
+// 复制过去之后还要更新map.json, 以建立正确的映射关系
 
 webpack(webpackConfig, function (err, stats) {
     spinner.stop()
