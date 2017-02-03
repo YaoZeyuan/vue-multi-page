@@ -72,7 +72,7 @@ vue多页面实践之路
 
             WebStorm支持对node.js自带的库函数进行提示,在设置中搜索`coding assistance`点击`enable`即可
 
-            [webstorm-config-enable-coding-assistance](./img/webstorm-config-enable-coding-assistance.png)
+            ![webstorm-config-enable-coding-assistance](./img/webstorm-config-enable-coding-assistance.png)
 
     8.  创建基础目录结构
         1.  新加目录(以项目目录为当前目录)
@@ -176,7 +176,7 @@ vue多页面实践之路
             1.  执行命令`npm run dev`
             2.  需要注意的是由于是多页面vue，所以执行该命令后需要手工输入index.html地址才能进入调试页面，如图所示
 
-                [run-dev-index-html-address-demo](./img/run-dev-index-html-address-demo.png)
+                ![run-dev-index-html-address-demo](./img/run-dev-index-html-address-demo.png)
 
                 红框部分即为demo、signin、zhihu对应的本地调试地址(http://localhost:8080/multi_vue_demo/0.0.2/html/demo/index.html、http://localhost:8080/multi_vue_demo/0.0.2/html/signin/index.html、http://localhost:8080/multi_vue_demo/0.0.2/html/zhihu/index.html )
 
