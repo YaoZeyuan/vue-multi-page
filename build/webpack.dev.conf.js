@@ -8,9 +8,14 @@ var env = config.dev.env
 var FriendlyErrors = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    //baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
+// 这里有一个问题，因为js里是按引用传递的，所以如果按照原先的做法直接对baseWebpackConfig.entry进行操作
+// 会导致config.project里的配置也会随之变化，导致后续代码出错
+// 因此需要单独创建一个变量，避免污染config配置
+let project_list = {};
+Object.keys(config.extend.project).forEach(function (name) {
+    project_list[name] = ['./build/dev-client'].concat(config.extend.project[name])
 })
+baseWebpackConfig.entry = project_list
 
 module.exports = merge(baseWebpackConfig, {
     module: {
