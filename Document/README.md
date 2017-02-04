@@ -34,8 +34,11 @@ vue多页面实践之路
         1.  切换到待初始化vue项目的目录下, 执行命令 `npm install vue-cli`
             ![npm-install-vue-cli](./img/npm-install-vue-cli.png)
     4.  创建基础的vue项目(vue2.0 + webpack)
+
         执行命令：`vue init webpack muilt-page-vue` ( 创建一个名为muilt-page-vue, 以webpack模版作为基底的vue项目, 更多选项参见[vue-cli的说明文档](https://github.com/vuejs/vue-cli))
+
         ![init-muilt-page-vue-project](./img/init-muilt-page-vue-project.png)
+
         这里直接使用的默认选项，没有添加各种扩展的代码测试工具(普通开发基本用不着)
     5.  初始化vue项目
         1.  正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）
@@ -45,17 +48,22 @@ vue多页面实践之路
         3.  安装其他依赖(例如[element-ui](http://element.eleme.io/#/zh-CN)组件etc，这里随便安装就可以了)
     6.  执行到这一步之后，一个基础的vue单页面项目就已经建好了，如果直接运行`npm run dev`的话，就可以直接进行开发工作。但是因为我们要做的是多页面项目，所以下边就要开始各种魔改了
     7.  WebStorm配置
+
         在修改代码之前要先处理下WebStorm的配置问题，否则代码改起来会比较别扭
-        1.  将js模式改为ES6模式，否则的话各种报错，没有import方法etc，你懂得
+        1.  将js模式改为ES6模式，否则的话各种报错，没有import方法etc
+
             ![webstorm-config-js-es6-mode](./img/webstorm-config-js-es6-mode.png)
         2.  关闭分号缺失提示
+
             vue-cli生成的模版里是不带分号的，所以需要在WebStorm里关掉分号缺失自动报错功能
 
             方法为：Setting中搜索unterminated ，去掉打钩
 
             ![webstorm-config-unset-unterminated](./img/webstorm-config-unset-unterminated.png)
 
+
         3.  关闭safe-write功能
+
             这个选项会让WebStorm保存之后不直接写到原文件里，导致webpack dev模式监听不到文件变化，从而也就不会重新编代码，只有重新运行`npm run dev`才能加载新代码，非常麻烦
             所以一定要关掉它
 
@@ -64,6 +72,7 @@ vue多页面实践之路
             ![webstorm-config-close-safe-write](./img/webstorm-config-close-safe-write.png)
 
         4.  添加debug功能
+
             我们在测试webpack功能的时候(例如写插件)需要单步执行命令，这时候就需要进行一下配置
 
             1.
@@ -159,6 +168,7 @@ vue多页面实践之路
                 |----------lib 项目所依赖的库文件
 
     9.  修改默认配置代码
+
         这里我们以demo(demo),签到(signin),知乎(zhihu)三个项目为例
         1.  创建项目目录配置js
             1.  创建`./config/project.js`
@@ -183,6 +193,7 @@ vue多页面实践之路
             2.  添加map.json生成插件
             3.  其他修改详见文件内容
     10. 执行项目
+
         到这一步就可以编译具体项目了
         1.  本地测试
             1.  执行命令`npm run dev`
