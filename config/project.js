@@ -6,20 +6,19 @@
 let fs = require("fs")
 
 let name = 'multi_vue_demo' // 项目名，提取出来以方便dev环境使用，否则会出现undefined = =
-let vcc_type = 'git' // 版本控制工具
+let vcs_type = '' // 设定版本控制工具，用于自动获取版本号，默认是0.0.1
 
 let version = ''
 if (vcs_type == 'git') {
     // git项目获取版本号
     version = fs.readdirSync('./.git/refs/tags').pop().trim()// 获取版本库最新tag值
-}
-else {
+} else {
     if (vcs_type == 'hg') {
         // hg项目获取版本号
         let tag_content = fs.readFileSync("./.hgtags", 'utf8') // 获取hgtags的内容
         version = tag_content.trim().split(' ').pop() // 直接trim后取最后一行，以空格分隔获取最新版本号
     } else {
-        version = '0.0.1'
+        version = '1.0.0'
     }
 }
 
