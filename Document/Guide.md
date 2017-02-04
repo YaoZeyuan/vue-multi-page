@@ -17,14 +17,19 @@
 
 5.  扩展说明
     1.  项目名
-        需要设置一个基础的项目名，在`/config/project.js`中进行设置，默认是'multi_vue_demo'
+        1.  需要设置一个基础的项目名，在`/config/project.js`中进行设置，默认是`multi_vue_demo`
     2.  版本号与map.json
         1.  在理想情况下，网页端输出js/css代码时只需要写一行`<script src="{{STATIC 'js/demo.js'}}" ></script>`，然后在渲染的时候通过`map.json`将文件名替换为真实地址即可。
+
             这时候就需要
-                1.  在编译时生成带有文件名和真实地址对应关系的map.json
-                2.  在生成map.json时带上对应的版本号，方便发布和回滚
+
+            1.  在编译时生成带有文件名和真实地址对应关系的map.json
+            2.  在生成map.json时带上对应的版本号，方便发布和回滚
+
             所以plugin里的generate_map_json就是为了解决这个问题添加的。使用的时候只要在`/config/project.js`中设定上vcs_type(git或hg)，每次发布代码之后打上tag即可
+
     3.  跨域调试
+
         vue本地调试中最大的问题就是如何解决跨域问题，vue-cli中提供了http-proxy-middleware作为端口转发的配置，可以在调试时本地虚拟一个服务端接收请求并代为转发该请求，这样就解决了跨域问题(http://www.jianshu.com/p/95b2caf7e0da)
 
         但是直接使用proxy-table配置有一个问题在于，有一个接口就要写一次配置，使用起来很麻烦，而在绝大多数情况下一个vue项目只会有一个对应的api域名，所以建议直接修改`/build/dev-server.js`文件，将所有非html请求全部转发到api域名下，这样会更方便些
