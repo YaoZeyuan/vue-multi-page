@@ -45,9 +45,10 @@
             //     app.use(proxyMiddleware(context, options))
             // })
 
-            // 本地调试vue的时候会有跨域问题，所以这里自定义一个过滤器，凡是没有index.html(本地调试时dev-server自动生成的根html文件)和'.'(dev-server生成的js/css/font/...文件)的，一律使用转发工具去请求真实地址的ajax接口
+            // 本地调试vue的时候会有跨域问题，所以这里自定义一个过滤器进行检测，命中规则就自动转发到接口地址上去
             let customer_filter = function (pathname, req) {
-                return (pathname.indexOf('index.html') == -1) && (pathname.indexOf('.') == -1)
+               // 检测是否有接口标志关键字，有的话就转发过去
+               return pathname.indexOf('async') != -1
             }
             app.use(proxyMiddleware(customer_filter, {
                 target: 'http://x.lo.jumei.com/', // target host
