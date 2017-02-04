@@ -1,4 +1,4 @@
-`use strict`
+"use strict"
 let config = require('../../../config')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
 
