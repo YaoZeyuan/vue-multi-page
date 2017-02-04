@@ -12,8 +12,8 @@ var FriendlyErrors = require('friendly-errors-webpack-plugin')
 // 会导致config.project里的配置也会随之变化，导致后续代码出错
 // 因此需要单独创建一个变量，避免污染config配置
 let project_list = {};
-Object.keys(config.extend.project).forEach(function (name) {
-    project_list[name] = ['./build/dev-client'].concat(config.extend.project[name])
+Object.keys(config.project_config.project).forEach(function (name) {
+    project_list[name] = ['./build/dev-client'].concat(config.project_config.project[name])
 })
 baseWebpackConfig.entry = project_list
 
