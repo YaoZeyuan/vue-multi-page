@@ -10,10 +10,13 @@ vue多页面实践之路
 0.  默认系统环境及配置软件
     1.  Windows 10 + PowerShell
     2.  ConEmu
+
         可能是目前最好用的Windows终端，用户体验堪比Ubuntu自带的Terminal
     3.  VSCode
+
         有固态硬盘支持的情况下Windows平台中最好用的文本编辑器
     4.  WebStorm
+
         js开发必备ide，具体设置后边会详细介绍
 
 
@@ -77,22 +80,31 @@ vue多页面实践之路
     8.  创建基础目录结构
         1.  新加目录(以项目目录为当前目录)
             1.  ./dist
+
                 用于对外发布编译后的文件
             2.  ./map
+
                 输出map.json，控制文件版本(后边会有说明)
             3.  ./build/plugin/webpack
+
                 用于存放webpack插件，输出map.json文件
             4.  ./src/assets/font
+
                 字体文件
             5.  ./src/assets/img
+
                 图片文件
             6.  ./src/assets/media
+
                 媒体文件
             7.  ./src/lib
+
                 公用类库,当项目间有公用类库时, 可以存放在该目录下
             7.  ./src/utils
+
                 通用工具方法,当项目间有通用的工具方法时,可以存放在该目录下
             7.  ./src/view
+
                 项目目录，所有项目均存放在该目录下
         2.  删除无用的文件,添加.gitignore配置
             1.  删除`./src/assets/logo.png`, `./src/App.vue`, `./src/main.js`, 这三个文件是为配置单页面应用创建的，现在已经用不到了，直接删除掉即可
@@ -178,7 +190,16 @@ vue多页面实践之路
 
                 ![run-dev-index-html-address-demo](./img/run-dev-index-html-address-demo.png)
 
-                红框部分即为demo、signin、zhihu对应的本地调试地址(http://localhost:8080/multi_vue_demo/0.0.2/html/demo/index.html、http://localhost:8080/multi_vue_demo/0.0.2/html/signin/index.html、http://localhost:8080/multi_vue_demo/0.0.2/html/zhihu/index.html )
+                红框部分即为demo、signin、zhihu对应的本地调试地址
+                (
+
+                http://localhost:8080/multi_vue_demo/0.0.2/html/demo/index.html、
+
+                http://localhost:8080/multi_vue_demo/0.0.2/html/signin/index.html、
+
+                http://localhost:8080/multi_vue_demo/0.0.2/html/zhihu/index.html
+
+                )
 
         2.  线上编译
             `npm run build`
