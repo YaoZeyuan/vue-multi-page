@@ -50,7 +50,7 @@ module.exports = {
             },
             {
                 // 图片资源处理器
-                // 10kb以下数据直接转为base64,否则置于fonts/文件夹中
+                // 10kb以下数据直接转为base64,否则置于img/文件夹中
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url',
                 query: {
