@@ -49,20 +49,22 @@ module.exports = {
                 loader: 'json'
             },
             {
-                // 静态资源处理器
+                // 图片资源处理器
+                // 10kb以下数据直接转为base64,否则置于fonts/文件夹中
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url',
                 query: {
-                    limit: 10000,
+                    limit: 10240,
                     name: utils.assetsPath('img/[name].[hash:7].[ext]')
                 }
             },
             {
-                // 静态资源处理器
+                // 字体资源处理器
+                // 10kb以下数据直接转为base64,否则置于fonts/文件夹中
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url',
                 query: {
-                    limit: 10000,
+                    limit: 10240,
                     name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
             }

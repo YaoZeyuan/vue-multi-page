@@ -97,13 +97,13 @@ vue多页面实践之路
             3.  ./build/plugin/webpack
 
                 用于存放webpack插件，输出map.json文件
-            4.  ./src/assets/font
+            4.  ./src/fonts
 
                 字体文件
-            5.  ./src/assets/img
+            5.  ./src/img
 
                 图片文件
-            6.  ./src/assets/media
+            6.  ./src/media
 
                 媒体文件
             7.  ./src/lib
@@ -151,10 +151,9 @@ vue多页面实践之路
                 |--------------------           目录命名规则在/build/webpack.prod.conf.js文件中，修改后需要在/build/plugin/webpack/create_map_json.js中进行相应的修改, 以确保正常生成map.json文件
                 |--map  项目map.json存放地址, 项目的map.json生成后存放在该目录内
                 |--src  项目目录，所有相关文件都在在里
-                |----asserts  静态资源目录
-                |--------font 静态资源-字体
-                |--------img  静态资源-图片
-                |--------media  静态资源-其他媒体资源
+                |----fonts 静态资源-字体
+                |----img  静态资源-图片
+                |----media  静态资源-其他媒体资源
                 |----components 公用组件 当项目间有公用组件时, 可以存放在该目录下
                 |----lib  公用类库 当项目间有公用类库时, 可以存放在该目录下
                 |----utils  通用工具方法 当项目间有通用的工具方法时, 可以存放在该目录下
