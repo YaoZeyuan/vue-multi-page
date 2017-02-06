@@ -33,6 +33,7 @@ vue多页面实践之路
     3.  安装vue-cli
         1.  切换到待初始化vue项目的目录下, 执行命令 `npm install vue-cli`
             ![npm-install-vue-cli](./img/npm-install-vue-cli.png)
+
     4.  创建基础的vue项目(vue2.0 + webpack)
 
         执行命令：`vue init webpack muilt-page-vue` ( 创建一个名为muilt-page-vue, 以webpack模版作为基底的vue项目, 更多选项参见[vue-cli的说明文档](https://github.com/vuejs/vue-cli))
@@ -40,13 +41,16 @@ vue多页面实践之路
         ![init-muilt-page-vue-project](./img/init-muilt-page-vue-project.png)
 
         这里直接使用的默认选项，没有添加各种扩展的代码测试工具(普通开发基本用不着)
+
     5.  初始化vue项目
         1.  正如创建项目后提示的那样，cd到对应项目目录，然后执行`npm install`（安装各种依赖）
         2.  安装vue-router/vue-resource
             1.  正常项目肯定会用到这两个功能(vue-router => 路由， vue-resource => http请求)
             2.  执行`npm install vue-router vue-resource --save`
         3.  安装其他依赖(例如[element-ui](http://element.eleme.io/#/zh-CN)组件etc，这里随便安装就可以了)
+
     6.  执行到这一步之后，一个基础的vue单页面项目就已经建好了，如果直接运行`npm run dev`的话，就可以直接进行开发工作。但是因为我们要做的是多页面项目，所以下边就要开始各种魔改了
+
     7.  WebStorm配置
 
         在修改代码之前要先处理下WebStorm的配置问题，否则代码改起来会比较别扭
@@ -60,7 +64,6 @@ vue多页面实践之路
             方法为：Setting中搜索unterminated ，去掉打钩
 
             ![webstorm-config-unset-unterminated](./img/webstorm-config-unset-unterminated.png)
-
 
         3.  关闭safe-write功能
 
@@ -80,6 +83,7 @@ vue多页面实践之路
 
             2.
                 ![webstorm-config-add-debug-config-step-2](./img/webstorm-config-add-debug-config-step-2.png)
+
         5.  【可选】打开node.js的库函数提示
 
             WebStorm支持对node.js自带的库函数进行提示,在设置中搜索`coding assistance`点击`enable`即可
