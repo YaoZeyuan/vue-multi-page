@@ -37,7 +37,5 @@ module.exports = {
         // 组织格式 ： 项目名 => 以项目根目录为基准的index.vue路径
         // 其在webpack中的对应格式为：[name](生成的js名) => [main.js所在路径]
         demo: './src/view/demo', // 示例项目，新建页面可以直接复制该项目的代码
-        signin: './src/view/signin', // 签到
-        zhihu: './src/view/zhihu',  // 知乎
     },
 };
