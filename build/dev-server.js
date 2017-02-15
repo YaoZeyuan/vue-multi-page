@@ -65,6 +65,12 @@ app.use(staticPath, express.static('./static'))
 
 var uri = 'http://localhost:' + port
 
+// 直接打开最新添加的项目,方便调试
+let project_list = config.project_config.project
+let lasted_project_index = Object.keys(project_list).length - 1
+let lasted_project_uri = uri + '/' + config.project_config.static_root + '/html/' + Object.keys(project_list)[lasted_project_index] + '/index.html'
+console.log(`lasted_project_uri => ${lasted_project_uri}`);
+
 devMiddleware.waitUntilValid(function () {
     console.log('> Listening at ' + uri + '\n')
 })
@@ -77,6 +83,6 @@ module.exports = app.listen(port, function (err) {
 
     // when env is testing, don't need open it
     if (process.env.NODE_ENV !== 'testing') {
-        opn(uri)
+        opn(lasted_project_uri)
     }
 })
