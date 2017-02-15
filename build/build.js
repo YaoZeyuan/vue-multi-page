@@ -19,7 +19,7 @@ var spinner = ora('building for production...')
 spinner.start()
 
 var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
-// 利用命令将静态资源复制到目标文件夹中去
+// 按静态资源版本号创建目录
 rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
 
