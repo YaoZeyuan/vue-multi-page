@@ -3,7 +3,7 @@
  */
 
 // 组件只有import之后才能使用
-import base from 'components/base.vue'
+import base from './components/base.vue'
 
 const routes =
     [
