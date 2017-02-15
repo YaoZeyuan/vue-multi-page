@@ -32,13 +32,13 @@ vue多页面实践之路
 
     3.  安装vue-cli
         1.  切换到待初始化vue项目的目录下, 执行命令 `npm install vue-cli`
-            ![npm-install-vue-cli](./img/npm-install-vue-cli.png)
+            ![npm-install-vue-cli](./Document/img/npm-install-vue-cli.png)
 
     4.  创建基础的vue项目(vue2.0 + webpack)
 
         执行命令：`vue init webpack muilt-page-vue` ( 创建一个名为muilt-page-vue, 以webpack模版作为基底的vue项目, 更多选项参见[vue-cli的说明文档](https://github.com/vuejs/vue-cli))
 
-        ![init-muilt-page-vue-project](./img/init-muilt-page-vue-project.png)
+        ![init-muilt-page-vue-project](./Document/img/init-muilt-page-vue-project.png)
 
         这里直接使用的默认选项，没有添加各种扩展的代码测试工具(普通开发基本用不着)
 
@@ -56,14 +56,14 @@ vue多页面实践之路
         在修改代码之前要先处理下WebStorm的配置问题，否则代码改起来会比较别扭
         1.  将js模式改为ES6模式，否则的话各种报错，没有import方法etc
 
-            ![webstorm-config-js-es6-mode](./img/webstorm-config-js-es6-mode.png)
+            ![webstorm-config-js-es6-mode](./Document/img/webstorm-config-js-es6-mode.png)
         2.  关闭分号缺失提示
 
             vue-cli生成的模版里是不带分号的，所以需要在WebStorm里关掉分号缺失自动报错功能
 
             方法为：Setting中搜索unterminated ，去掉打钩
 
-            ![webstorm-config-unset-unterminated](./img/webstorm-config-unset-unterminated.png)
+            ![webstorm-config-unset-unterminated](./Document/img/webstorm-config-unset-unterminated.png)
 
         3.  关闭safe-write功能
 
@@ -72,23 +72,23 @@ vue多页面实践之路
 
             方法：Setting中搜索 `safe write`, 在System Setting里
 
-            ![webstorm-config-close-safe-write](./img/webstorm-config-close-safe-write.png)
+            ![webstorm-config-close-safe-write](./Document/img/webstorm-config-close-safe-write.png)
 
         4.  添加debug功能
 
             我们在测试webpack功能的时候(例如写插件)需要单步执行命令，这时候就需要进行一下配置
 
             1.
-                ![webstorm-config-add-debug-config-step-1](./img/webstorm-config-add-debug-config-step-1.png)
+                ![webstorm-config-add-debug-config-step-1](./Document/img/webstorm-config-add-debug-config-step-1.png)
 
             2.
-                ![webstorm-config-add-debug-config-step-2](./img/webstorm-config-add-debug-config-step-2.png)
+                ![webstorm-config-add-debug-config-step-2](./Document/img/webstorm-config-add-debug-config-step-2.png)
 
         5.  【可选】打开node.js的库函数提示
 
             WebStorm支持对node.js自带的库函数进行提示,在设置中搜索`coding assistance`点击`enable`即可
 
-            ![webstorm-config-enable-coding-assistance](./img/webstorm-config-enable-coding-assistance.png)
+            ![webstorm-config-enable-coding-assistance](./Document/img/webstorm-config-enable-coding-assistance.png)
 
     8.  创建基础目录结构
         1.  新加目录(以项目目录为当前目录)
@@ -202,7 +202,7 @@ vue多页面实践之路
             1.  执行命令`npm run dev`
             2.  需要注意的是由于是多页面vue，所以执行该命令后需要手工输入index.html地址才能进入调试页面，如图所示
 
-                ![run-dev-index-html-address-demo](./img/run-dev-index-html-address-demo.png)
+                ![run-dev-index-html-address-demo](./Document/img/run-dev-index-html-address-demo.png)
 
                 红框部分即为demo、signin、zhihu对应的本地调试地址
                 (
