@@ -6,6 +6,8 @@
 
 使用方法:
 
+0.  安装[node.js](https://nodejs.org/zh-cn/)
+
 1.  下载项目，执行`npm install`安装依赖
 
 2.  复制`/src/view/demo`目录为任意新项目名，在`/config/project`的project属性中添加【项目名】=>【项目路径】的对应关系，即可开始新页面的编辑
