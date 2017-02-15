@@ -5,7 +5,11 @@ vue多页面实践之路
 1.  通过vue-cli，搭建出一套基础的vue框架
 2.  通过修改框架代码，实现多页面结构的支持
 
-##  具体实现
+##  直接使用
+
+1.  [项目使用说明文档](https://github.com/YaoZeyuan/vue-multi-page/blob/master/Guide.md)
+
+##  具体实现过程
 
 0.  默认系统环境及配置软件
     1.  Windows 10 + PowerShell
