@@ -27,7 +27,7 @@
             2.  在生成map.json时带上对应的版本号，方便发布和回滚
 
             所以plugin里的generate_map_json就是为了解决这个问题添加的。使用的时候只要在`/config/project.js`中设定上vcs_type(git或hg)，每次发布代码之后打上tag即可
-
+        2.  如果是个人小项目，不需要使用map.json插件的话，可以在`/build/webpack.prod.conf.js`中，将`[chunkhash]`、`[id]`等唯一标识符去掉，再编译出的文件名中就不会有随机字符串了。这样在使用时，通过动态时间戳绕过缓存，就可以正常使用vue编译出的js/css文件了
     3.  跨域调试
 
         vue本地调试中最大的问题就是如何解决跨域问题，vue-cli中提供了http-proxy-middleware作为端口转发的配置，可以在调试时本地虚拟一个服务端接收请求并代为转发该请求，这样就解决了跨域问题(http://www.jianshu.com/p/95b2caf7e0da)
