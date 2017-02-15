@@ -16,7 +16,7 @@
             <li><a href="https://github.com/pagekit/vue-resource/blob/develop/docs/http.md" target="_blank">Vue-Resource文档</a></li>
             <br/>
             <br/>
-            <li><a class="project-description" href="https://github.com/YaoZeyuan/vue-multi-page/blob/master/Document/Guide.md" target="_blank">项目文档</a></li>
+            <li><a class="project-description" href="https://github.com/YaoZeyuan/vue-multi-page/blob/master/Guide.md" target="_blank">项目文档</a></li>
             </ul>
         </div>
     </div>
