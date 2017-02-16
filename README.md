@@ -81,7 +81,7 @@ vue作为单页面应用已经无可挑剔，但在实际应用的时候，我�
 
         3.  关闭safe-write功能
 
-            这个选项会让WebStorm保存之后不直接写到原文件里，导致webpack dev模式监听不到文件变化，从而也就不会重新编代码，只有重新运行`npm run dev`才能加载新代码，非常麻烦
+            这个选项会让WebStorm保存之后不直接写到原文件里，导致webpack dev模式监听不到文件变化，从而也就不会重新编译代码，只有重新运行`npm run dev`才能加载新代码，非常麻烦
             所以一定要关掉它
 
             方法：Setting中搜索 `safe write`, 在System Setting里
