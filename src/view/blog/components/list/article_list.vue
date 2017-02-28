@@ -1,7 +1,11 @@
 <template>
     <!-- vue要求每个组件中都有且只能有一个根元素 -->
     <div class="base">
-
+        <div class='article-list'>
+            <template v-for="post in post_list">
+                <item :post=post></item>
+            </template>
+        </div>
     </div>
 </template>
 
@@ -9,48 +13,16 @@
     /*  style标签之内会被作为css进行处理，所以需要使用css的注释形式   */
     /*  加上scoped可以将css的作用效果限定在该组件之内 */
     .base {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
 
-    h1, h2 {
-        font-weight: normal;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    }
-
-    a.project-description {
-        font-weight: normal;
-        font-size: 1.5rem;
-        color: #2196f3;
-        text-decoration: none;
-    }
-
-    a.project-description:hover {
-        font-weight: normal;
-        font-size: 1.5rem;
-        color: #3f51b5;
-        text-decoration: none;
+        font-family: sans-serif;
+        background-color: rgb(233,242,249);
+        background-attachment: fixed;
     }
 </style>
 
 <script>
+    import item from './item.vue'
     export default {
         data: function () {
             return {
@@ -62,7 +34,7 @@
         },
         methods: {
             getPosts: function () {
-                this.$http.get('http://www.yaozeyuan.online/api/get_posts/').then((response) => {
+                this.$http.jsonp('http://www.yaozeyuan.online/api/get_posts/').then((response) => {
                     // success callback
                     console.log(response.body)
 
@@ -77,5 +49,8 @@
                 });
             }
         },
+        components:{
+            'item':item,
+        }
     }
 </script>

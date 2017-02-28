@@ -3,13 +3,20 @@
  */
 
 // 组件只有import之后才能使用
-import base from './components/base.vue'
+import article_list from './components/list/article_list.vue'
+import article from './components/item/article.vue'
 
 const routes =
     [
         {
             path: '/',
-            component: base,
+            component: article_list,
+        },
+        {
+            path: '/article',
+            // 只有设置了name才可以向组件中传递参数
+            name: '/article',
+            component: article,
         },
     ];
 export default routes;
