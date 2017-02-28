@@ -15,7 +15,7 @@
     .base {
         text-align: center;
         font-family: sans-serif;
-        background-color: rgb(233,242,249);
+        margin-top: 2rem;
     }
 </style>
 

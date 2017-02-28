@@ -10,9 +10,13 @@
     </div>
 </template>
 
-<style scoped>
+<style >
 /*  style标签之内会被作为css进行处理，所以需要使用css的注释形式   */
 /*  加上scoped可以将css的作用效果限定在该组件之内 */
+    html{
+        /* 添加到这里，为网页加上背景色 */
+        background-color: rgb(233,242,249);
+    }
 </style>
 
 <script>
