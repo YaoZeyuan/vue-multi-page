@@ -14,10 +14,8 @@
     /*  加上scoped可以将css的作用效果限定在该组件之内 */
     .base {
         text-align: center;
-
         font-family: sans-serif;
         background-color: rgb(233,242,249);
-        background-attachment: fixed;
     }
 </style>
 
