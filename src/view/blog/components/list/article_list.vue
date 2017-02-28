@@ -3,7 +3,7 @@
     <div class="base">
         <div class='article-list'>
             <template v-for="post in post_list">
-                <item :post=post></item>
+                <preview :post=post></preview>
             </template>
         </div>
     </div>
@@ -20,7 +20,7 @@
 </style>
 
 <script>
-    import item from './item.vue'
+    import preview from './preview.vue'
     export default {
         data: function () {
             return {
@@ -48,7 +48,7 @@
             }
         },
         components:{
-            'item':item,
+            'preview':preview,
         }
     }
 </script>

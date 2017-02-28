@@ -4,7 +4,7 @@
 
 // 组件只有import之后才能使用
 import article_list from './components/list/article_list.vue'
-import article from './components/item/article.vue'
+import article from './components/detail/article.vue'
 
 const routes =
     [
