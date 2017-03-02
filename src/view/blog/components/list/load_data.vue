@@ -1,14 +1,16 @@
 <template>
     <div>
-        <div class="container">
-            <!-- 载入数据/展示Loading效果-->
-            <template v-if="is_loading">
-                <div class='loading'>载入中</div>
-            </template>
-            <template v-if="!is_loading">
-                <div class='next-page '>下一页</div>
-            </template>
-        </div>
+        <template v-if="is_loading">
+            <div>
+                <div class="loader">Loading...</div>
+            </div>
+        </template>
+        <!-- 载入数据/展示Loading效果-->
+        <template v-if="!is_loading">
+            <div class="container">
+                <div class='next-page button button--wapasha button--text-thick button--inverted'>下一页</div>
+            </div>
+        </template>
 
     </div>
 </template>
@@ -23,19 +25,84 @@
         border-radius: 3px;
         margin: 0 auto 0 auto;
     }
-    .next-page{
+
+    .loader {
+        color: darkgray;
+        font-size: 12px;
+        margin: 3rem auto;
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        position: relative;
+        text-indent: -9999em;
+        animation: load4 1.3s infinite linear;
+        transform: translateZ(0) scale(0.3, 0.3);
+    }
+
+    @-webkit-keyframes load4 {
+        0%,
+        100% {
+            box-shadow: 0 -3rem 0 0.2rem, 2rem -2rem 0 0rem, 3rem 0 0 -1rem, 2rem 2rem 0 -1rem, 0 3rem 0 -1rem, -2rem 2rem 0 -1rem, -3rem 0 0 -1rem, -2rem -2rem 0 0;
+        }
+        12.5% {
+            box-shadow: 0 -3rem 0 0, 2rem -2rem 0 0.2rem, 3rem 0 0 0, 2rem 2rem 0 -1rem, 0 3rem 0 -1rem, -2rem 2rem 0 -1rem, -3rem 0 0 -1rem, -2rem -2rem 0 -1rem;
+        }
+        25% {
+            box-shadow: 0 -3rem 0 -0.5rem, 2rem -2rem 0 0, 3rem 0 0 0.2rem, 2rem 2rem 0 0, 0 3rem 0 -1rem, -2rem 2rem 0 -1rem, -3rem 0 0 -1rem, -2rem -2rem 0 -1rem;
+        }
+        37.5% {
+            box-shadow: 0 -3rem 0 -1rem, 2rem -2rem 0 -1rem, 3rem 0rem 0 0, 2rem 2rem 0 0.2rem, 0 3rem 0 0rem, -2rem 2rem 0 -1rem, -3rem 0rem 0 -1rem, -2rem -2rem 0 -1rem;
+        }
+        50% {
+            box-shadow: 0 -3rem 0 -1rem, 2rem -2rem 0 -1rem, 3rem 0 0 -1rem, 2rem 2rem 0 0rem, 0 3rem 0 0.2rem, -2rem 2rem 0 0, -3rem 0rem 0 -1rem, -2rem -2rem 0 -1rem;
+        }
+        62.5% {
+            box-shadow: 0 -3rem 0 -1rem, 2rem -2rem 0 -1rem, 3rem 0 0 -1rem, 2rem 2rem 0 -1rem, 0 3rem 0 0, -2rem 2rem 0 0.2rem, -3rem 0 0 0, -2rem -2rem 0 -1rem;
+        }
+        75% {
+            box-shadow: 0rem -3rem 0 -1rem, 2rem -2rem 0 -1rem, 3rem 0rem 0 -1rem, 2rem 2rem 0 -1rem, 0 3rem 0 -1rem, -2rem 2rem 0 0, -3rem 0rem 0 0.2rem, -2rem -2rem 0 0;
+        }
+        87.5% {
+            box-shadow: 0rem -3rem 0 0, 2rem -2rem 0 -1rem, 3rem 0 0 -1rem, 2rem 2rem 0 -1rem, 0 3rem 0 -1rem, -2rem 2rem 0 0, -3rem 0rem 0 0, -2rem -2rem 0 0.2rem;
+        }
+    }
+
+    @keyframes load4 {
+        0%,
+        100% {
+            box-shadow: 0 -3rem 0 0.2rem, 2rem -2rem 0 0rem, 3rem 0 0 -1rem, 2rem 2rem 0 -1rem, 0 3rem 0 -1rem, -2rem 2rem 0 -1rem, -3rem 0 0 -1rem, -2rem -2rem 0 0;
+        }
+        12.5% {
+            box-shadow: 0 -3rem 0 0, 2rem -2rem 0 0.2rem, 3rem 0 0 0, 2rem 2rem 0 -1rem, 0 3rem 0 -1rem, -2rem 2rem 0 -1rem, -3rem 0 0 -1rem, -2rem -2rem 0 -1rem;
+        }
+        25% {
+            box-shadow: 0 -3rem 0 -0.5rem, 2rem -2rem 0 0, 3rem 0 0 0.2rem, 2rem 2rem 0 0, 0 3rem 0 -1rem, -2rem 2rem 0 -1rem, -3rem 0 0 -1rem, -2rem -2rem 0 -1rem;
+        }
+        37.5% {
+            box-shadow: 0 -3rem 0 -1rem, 2rem -2rem 0 -1rem, 3rem 0rem 0 0, 2rem 2rem 0 0.2rem, 0 3rem 0 0rem, -2rem 2rem 0 -1rem, -3rem 0rem 0 -1rem, -2rem -2rem 0 -1rem;
+        }
+        50% {
+            box-shadow: 0 -3rem 0 -1rem, 2rem -2rem 0 -1rem, 3rem 0 0 -1rem, 2rem 2rem 0 0rem, 0 3rem 0 0.2rem, -2rem 2rem 0 0, -3rem 0rem 0 -1rem, -2rem -2rem 0 -1rem;
+        }
+        62.5% {
+            box-shadow: 0 -3rem 0 -1rem, 2rem -2rem 0 -1rem, 3rem 0 0 -1rem, 2rem 2rem 0 -1rem, 0 3rem 0 0, -2rem 2rem 0 0.2rem, -3rem 0 0 0, -2rem -2rem 0 -1rem;
+        }
+        75% {
+            box-shadow: 0rem -3rem 0 -1rem, 2rem -2rem 0 -1rem, 3rem 0rem 0 -1rem, 2rem 2rem 0 -1rem, 0 3rem 0 -1rem, -2rem 2rem 0 0, -3rem 0rem 0 0.2rem, -2rem -2rem 0 0;
+        }
+        87.5% {
+            box-shadow: 0rem -3rem 0 0, 2rem -2rem 0 -1rem, 3rem 0 0 -1rem, 2rem 2rem 0 -1rem, 0 3rem 0 -1rem, -2rem 2rem 0 0, -3rem 0rem 0 0, -2rem -2rem 0 0.2rem;
+        }
+    }
+
+    .next-page {
         font-weight: 600;
         padding: 1rem;
         vertical-align: middle;
     }
 
     .button {
-        float: left;
-        min-width: 150px;
-        max-width: 250px;
         display: block;
-        margin: 1em;
-        padding: 1em 2em;
         border: none;
         background: none;
         color: inherit;
@@ -45,6 +112,7 @@
         -webkit-backface-visibility: hidden;
         -moz-osx-font-smoothing: grayscale;
     }
+
     .button:focus {
         outline: none;
     }
@@ -56,41 +124,39 @@
         -webkit-transition: background-color 0.3s, color 0.3s;
         transition: background-color 0.3s, color 0.3s;
     }
+
     .button--wapasha.button--inverted {
         background: #fff;
         color: #37474f;
     }
+
     .button--wapasha::before {
         content: '';
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        max-width: 60rem;
+        height: 99%;
         border: 2px solid #3f51b5;
         z-index: -1;
         border-radius: inherit;
         opacity: 0;
-        -webkit-transform: scale3d(0.6, 0.6, 1);
         transform: scale3d(0.6, 0.6, 1);
-        -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
         transition: transform 0.3s, opacity 0.3s;
-        -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
         transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
     }
+
     .button--wapasha.button--inverted::before {
-        border-color: #7986cb;
+        border-color: #03a9f4;
     }
-    .button--wapasha:hover {
-        background-color: #fff;
-        color: #3f51b5;
-    }
+
     .button--wapasha.button--inverted:hover {
-        background-color: #37474f;
-        color: #7986cb;
+        background-color: azure;
+        color: burlywood;
     }
+
     .button--wapasha:hover::before {
-        -webkit-transform: scale3d(1, 1, 1);
         transform: scale3d(1, 1, 1);
         opacity: 1;
     }
