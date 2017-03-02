@@ -2,7 +2,7 @@
     <!-- vue要求每个组件中都有且只能有一个根元素 -->
     <div class="base">
         <div class="editor">
-            <textarea v-model=html></textarea>
+            <textarea rows=20 cols="20" v-model=html></textarea>
         </div>
         <hr>
         <div class="preview">
@@ -19,6 +19,10 @@
         font-family: sans-serif;
         margin-top: 2rem;
     }
+    .editor textarea{
+        width: 670px;
+        height: 20rem;
+    }
 </style>
 
 <script>
@@ -29,9 +33,6 @@
             return {
                 html : "<b>123</b>", // html源代码
             }
-        },
-        mounted: function () {
-
         },
         methods: {
 
