@@ -38,6 +38,5 @@ module.exports = {
         // 其在webpack中的对应格式为：[name](生成的js名) => [main.js所在路径]
         demo: './src/view/demo', // 示例项目，新建页面可以直接复制该项目的代码
         blog: './src/view/blog', // 示例项目，利用个人blog提供公共api进行测试
-        weixin_editor: './src/view/weixin_editor', // 示例项目，微信编辑器，提供插入图片的功能
     },
 };
