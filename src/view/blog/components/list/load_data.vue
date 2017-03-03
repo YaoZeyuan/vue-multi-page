@@ -8,7 +8,7 @@
         <!-- 载入数据/展示Loading效果-->
         <template v-if="!is_loading">
             <div class="container">
-                <div class='next-page button button--wapasha button--text-thick button--inverted'>下一页</div>
+                <div class='next-page button button--wapasha button--text-thick button--inverted'>加载更多</div>
             </div>
         </template>
 
