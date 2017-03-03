@@ -1,6 +1,8 @@
 <template>
     <div>
-        <div class="button button--wapasha button--text-thick button--inverted" v-on:click=report>加载更多</div>
+        <div class="button button--wapasha button--text-thick button--inverted" v-on:click=emitClick>
+            <slot></slot>
+        </div>
     </div>
 </template>
 <style scoped>
@@ -75,7 +77,7 @@
 <script>
     export default{
         methods:{
-            report:function () {
+            emitClick:function () {
                 console.log('clicked!')
                 this.$emit('clicked','test')
             }

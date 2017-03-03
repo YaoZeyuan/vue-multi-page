@@ -2,16 +2,17 @@
     <div>
         <div>this is template body</div>
         <router-link :to="{path: '/'}">
-            <button>返回</button>
+            <customerButton>返回</customerButton>
         </router-link>
     </div>
 </template>
 <style scoped>
-    body{
-        background-color:#ff0000;
+    a {
+        text-decoration:none;
     }
 </style>
 <script>
+    import customerButton from '../common/button.vue'
     export default{
         data(){
             return{
@@ -54,6 +55,7 @@
             }
         },
         components:{
+            customerButton,
         }
     }
 </script>
