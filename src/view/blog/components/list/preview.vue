@@ -1,6 +1,6 @@
 <template>
     <div>
-        <article>
+        <article v-on:click="redirect(post.id)">
             <header class="entry-header">
                 <h2 class="title">{{post.title}}</h2>
             </header><!-- .entry-header -->
@@ -53,6 +53,11 @@
         data(){
             return {
                 msg: 'hello vue'
+            }
+        },
+        methods:{
+            redirect:function (article_id) {
+                this.router.push({ name: 'article', params: { article_id: article_id}})
             }
         },
         computed:{
