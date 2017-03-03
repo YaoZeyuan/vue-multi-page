@@ -138,7 +138,7 @@
         width: 100%;
         max-width: 60rem;
         height: 99%;
-        border: 2px solid #3f51b5;
+        border: 2px solid black;
         z-index: -1;
         border-radius: inherit;
         opacity: 0;
@@ -148,7 +148,7 @@
     }
 
     .button--wapasha.button--inverted::before {
-        border-color: #03a9f4;
+        border-color: rgba(3, 169, 244, 0.24);;
     }
 
     .button--wapasha.button--inverted:hover {
