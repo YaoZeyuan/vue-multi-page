@@ -57,7 +57,7 @@
         },
         methods:{
             redirect:function (article_id) {
-                this.router.push({ name: 'article', params: { article_id: article_id}})
+                this.$router.push({ name: 'article', params: { article_id: article_id}})
             }
         },
         computed:{

@@ -15,7 +15,7 @@ const routes =
         {
             path: '/article',
             // 只有设置了name才可以向组件中传递参数
-            name: '/article',
+            name: 'article',
             component: article,
         },
     ];

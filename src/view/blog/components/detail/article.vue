@@ -1,6 +1,9 @@
 <template>
     <div>
         <div>this is template body</div>
+        <router-link :to="{path: '/'}">
+            <button>返回</button>
+        </router-link>
     </div>
 </template>
 <style scoped>
@@ -12,18 +15,17 @@
     export default{
         data(){
             return{
-                article_id: this.$route.params.article_id || '',
+                article_id: this.$route.params.article_id || '1',
                 post:{},
                 loading:false,
             }
         },
-        method:{
+        mounted:function () {
+            this.getContent()
+        },
+        methods:{
             getContent:function () {
                 console.info('开始获取数据')
-                if (this.is_completed) {
-                    console.info(`全部数据已加载完毕，不需要再请求数据了`)
-                    return
-                }
                 if (this.is_loading) {
                     console.info(`数据正在加载中，请稍后再试`)
                     return
