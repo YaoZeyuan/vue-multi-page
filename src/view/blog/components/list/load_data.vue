@@ -8,7 +8,7 @@
         <!-- 载入数据/展示Loading效果-->
         <template v-if="!is_loading">
             <div class="container">
-                <div class='next-page button button--wapasha button--text-thick button--inverted'>加载更多</div>
+                <div class='next-page button button--wapasha button--text-thick button--inverted' v-on:click=report>加载更多</div>
             </div>
         </template>
 
@@ -169,5 +169,11 @@
 <script>
     export default{
         props: ['is_loading'],
+        methods:{
+            report:function () {
+                console.log('clicked!')
+                this.$emit('clicked','test')
+            }
+        }
     }
 </script>
