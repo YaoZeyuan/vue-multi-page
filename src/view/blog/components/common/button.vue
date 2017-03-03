@@ -16,6 +16,7 @@
         background: none;
         color: inherit;
         vertical-align: middle;
+        text-align: center;
         position: relative;
         z-index: 1;
         -webkit-backface-visibility: hidden;

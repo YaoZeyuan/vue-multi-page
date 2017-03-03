@@ -8,7 +8,7 @@
         <!-- 载入数据/展示Loading效果-->
         <template v-if="!is_loading">
             <div class="container">
-                <customerButton  v-on:clicked=emitClick>载入中</customerButton>
+                <customerButton  v-on:clicked=emitClick>加载更多</customerButton>
             </div>
         </template>
 
