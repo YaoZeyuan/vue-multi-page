@@ -5,9 +5,9 @@
                 <h2 class="title">{{post.title}}</h2>
             </header><!-- .entry-header -->
 
-            <div class="entry-content" v-html=excerpt>
-            </div>
+            <div class="entry-content" v-html=excerpt></div>
             <br/>
+
             <footer class="entry-footer">
                 <span class="posted-on"><span class="screen-reader-text">发布于 </span><time>{{post.date}}</time></span>
                 <span class="cat-links" v-if="post.tags.length" ><span class="screen-reader-text">分类 </span>
