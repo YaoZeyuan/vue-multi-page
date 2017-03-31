@@ -2,7 +2,7 @@
     <div>
         <article v-on:click="redirect(post.id)">
             <header class="entry-header">
-                <h2 class="title">{{post.title}}</h2>
+                <h2 class="title">{{post.title.rendered}}</h2>
             </header><!-- .entry-header -->
 
             <div class="entry-content" v-html=excerpt></div>
@@ -62,7 +62,7 @@
         },
         computed:{
             excerpt : function(){
-                return this.post.excerpt.split('&hellip;')[0] + '&hellip;';
+                return this.post.excerpt.rendered.split('&hellip;')[0] + '&hellip;';
             }
         }
     }

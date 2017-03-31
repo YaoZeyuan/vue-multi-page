@@ -6,7 +6,7 @@
                 <preview :post=post></preview>
             </template>
         </div>
-        <load-data v-if="!is_completed" :is_loading="is_loading"  v-on:clicked=getPosts></load-data>
+        <load-data v-if="!is_completed" :is_loading="is_loading" v-on:clicked=getPosts></load-data>
     </div>
 </template>
 
@@ -29,8 +29,8 @@
             return {
                 post_list: [], // 这里使用了数组作为加载
                 page: 1,
-                count: 5,
-                count_total: 0,
+                per_page: 5,
+                loaded_article_count: 0, // 本次载入了多少篇文章
                 is_loading: false,// 是否正在加载数据
             }
         },
@@ -49,27 +49,24 @@
                     return
                 }
                 this.is_loading = true;
-                this.$http.jsonp('http://www.yaozeyuan.online/api/get_posts/', {
-                    params: {
-                        page: this.page,
-                        count: this.count,
-                    }
-                }).then((response) => {
+                this.$http.jsonp(
+                    'http://www.yaozeyuan.online/wp-json/wp/v2/posts', {
+                        jsonp: '_jsonp',
+                        params: {
+                            page: this.page,
+                            per_page: this.per_page,
+                        }
+                    }).then((response) => {
                     // success callback
                     console.log(response.body)
 
                     this.is_loading = false;
-                    if (response.body.status == 'ok') {
-                        // 获取成功
-                        this.post_list = this.article_list.concat(response.body.posts)
-                        this.count_total = response.body.count_total
-                        this.page += 1
-                    } else {
-                        console.info(`获取文章列表失败` + '失败原因:返回值错误');
-                    }
+                    // 获取成功
+                    this.post_list = this.article_list.concat(response.body)
+                    this.loaded_article_count = response.body.length
+                    this.page += 1
                 }, (response) => {
                     console.info(`获取文章列表失败` + '失败原因:网络异常');
-
                     this.is_loading = false;
                 });
             }
@@ -77,15 +74,15 @@
         computed: {
             is_completed: function () {
                 // 我显然写过博客。。。
-                return this.count_total == this.post_list.length && this.count_total != 0
+                return this.loaded_article_count == 0 && this.post_list.length != 0
             },
-            article_list : function () {
+            article_list: function () {
                 let article_list = []
-                for(let post of this.post_list){
+                for (let post of this.post_list) {
                     console.log(post)
                     article_list.push(post)
                 }
-                return  article_list
+                return article_list
             }
 
         },

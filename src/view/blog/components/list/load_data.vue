@@ -27,8 +27,9 @@
     }
 </style>
 <script>
-    import customerButton from '../common/button.vue'
-    import customerLoading from '../common/loading.vue'
+    import customerButton from 'src/components/demo/button'
+    import customerLoading from 'src/components/demo/loading.vue'
+
     export default{
         props: ['is_loading'],
         components:{

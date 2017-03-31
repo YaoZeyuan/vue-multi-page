@@ -73,7 +73,7 @@
     }
 </style>
 <script>
-    import customerButton from '../common/button.vue'
+    import customerButton from 'src/components/demo/button'
     export default{
         data(){
             return {
@@ -93,7 +93,7 @@
                     return
                 }
                 this.is_loading = true;
-                this.$http.jsonp('http://www.yaozeyuan.online/api/get_post/', {
+                this.$http.jsonp('http://www.yaozeyuan.online/wp-json/wp/v2/posts', {
                     params: {
                         post_id: this.article_id,
                     }
