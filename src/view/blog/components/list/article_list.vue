@@ -39,9 +39,10 @@
 </style>
 
 <script>
-
     import preview from './preview.vue'
     import loadData from './load_data.vue'
+
+    import blog_demo from "src/lib/blog_demo"
 
     export default {
         data: function () {
@@ -55,6 +56,7 @@
         },
         mounted: function () {
             this.getPosts();
+            blog_demo.log(`本地js扩展调用示例`)
         },
         methods: {
             getPosts: function () {
