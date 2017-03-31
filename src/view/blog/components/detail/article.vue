@@ -2,10 +2,10 @@
     <div>
         <article>
             <header class="entry-header">
-                <h2 class="title">{{post.title}}</h2>
+                <h2 class="title">{{post.title.rendered}}</h2>
             </header><!-- .entry-header -->
 
-            <div class="entry-content" v-html=post.content>
+            <div class="entry-content" v-html=post.content.rendered>
             </div>
             <br/>
             <footer class="entry-footer">
@@ -93,21 +93,14 @@
                     return
                 }
                 this.is_loading = true;
-                this.$http.jsonp('http://www.yaozeyuan.online/wp-json/wp/v2/posts', {
-                    params: {
-                        post_id: this.article_id,
-                    }
+                this.$http.jsonp('http://www.yaozeyuan.online/wp-json/wp/v2/posts/' + this.article_id, {
+                    jsonp: '_jsonp',
                 }).then((response) => {
                     // success callback
                     console.log(response.body)
 
                     this.is_loading = false;
-                    if (response.body.status == 'ok') {
-                        // 获取成功
-                        this.post = response.body.post
-                    } else {
-                        console.info(`获取文章列表失败` + '失败原因:返回值错误');
-                    }
+                    this.post = response.body
                 }, (response) => {
                     console.info(`获取文章列表失败` + '失败原因:网络异常');
 

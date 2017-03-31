@@ -51,7 +51,7 @@
                 this.is_loading = true;
                 this.$http.jsonp(
                     'http://www.yaozeyuan.online/wp-json/wp/v2/posts', {
-                        jsonp: '_jsonp',
+                        jsonp: '_jsonp',// vue-resource目前只能用这种方式修改jsonp参数，将来要考虑更换ajax插件
                         params: {
                             page: this.page,
                             per_page: this.per_page,
