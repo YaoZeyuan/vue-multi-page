@@ -1,6 +1,11 @@
 <template>
     <!-- vue要求每个组件中都有且只能有一个根元素 -->
     <div class="base">
+        <div class="logo">
+            <a href="https://www.yaozeyuan.online"  title="引入图片示例-博客主站">
+                <img src="/img/blog/logo/logo.png" alt="引入图片示例" title="引入图片示例">
+            </a>
+        </div>
         <div class='article-list'>
             <template v-for="post in post_list">
                 <preview :post=post></preview>
@@ -18,9 +23,23 @@
         font-family: sans-serif;
         margin-top: 2rem;
     }
+
+    .logo {
+        position: fixed;
+        width: 100%;
+        height: 2rem;
+        margin-top: -2rem;
+    }
+    .logo img{
+        float: right;
+        width: 2rem;
+        margin-right: 0.5rem;
+        margin-top: 0.5rem;
+    }
 </style>
 
 <script>
+
     import preview from './preview.vue'
     import loadData from './load_data.vue'
 
