@@ -2,10 +2,9 @@ var chalk = require('chalk')
 var semver = require('semver')
 var packageConfig = require('../package.json')
 var shell = require('shelljs')
-function exec (cmd) {
-  return require('child_process').execSync(cmd).toString().trim()
+function exec(cmd) {
+    return require('child_process').execSync(cmd).toString().trim()
 }
-
 var versionRequirements = [
     {
         name: 'node',
@@ -13,15 +12,13 @@ var versionRequirements = [
         versionRequirement: packageConfig.engines.node
     },
 ]
-
 if (shell.which('npm')) {
-  versionRequirements.push({
+    versionRequirements.push({
         name: 'npm',
         currentVersion: exec('npm --version'),
         versionRequirement: packageConfig.engines.npm
-  })
-    }
-
+    })
+}
 module.exports = function () {
     var warnings = []
     for (var i = 0; i < versionRequirements.length; i++) {
@@ -33,7 +30,6 @@ module.exports = function () {
             )
         }
     }
-
     if (warnings.length) {
         console.log('')
         console.log(chalk.yellow('To use this template, you must update following to modules:'))

@@ -11,9 +11,7 @@ var html_template_generator = require('./plugin/webpack/generate_html_template_l
 var map_json_generator = require('./plugin/webpack/generate_map_json')
 const UglifyJsparallelPlugin = require('webpack-uglify-parallel');
 const os = require('os');
-
 var env = config.build.env
-
 var webpackConfig = merge(baseWebpackConfig, {
     module: {
         rules: utils.styleLoaders({
@@ -47,8 +45,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         new ExtractTextPlugin({
             filename: utils.assetsPath('css/[name].[contenthash].css')
         }),
-    // Compress extracted CSS. We are using this plugin so that possible
-    // duplicated CSS from different components can be deduped.
+        // Compress extracted CSS. We are using this plugin so that possible
+        // duplicated CSS from different components can be deduped.
         new OptimizeCSSPlugin({
             cssProcessorOptions: {
                 safe: true
@@ -93,10 +91,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         })
     ])
 })
-
 if (config.build.productionGzip) {
     var CompressionWebpackPlugin = require('compression-webpack-plugin')
-
     webpackConfig.plugins.push(
         new CompressionWebpackPlugin({
             asset: '[path].gz[query]',
@@ -111,10 +107,8 @@ if (config.build.productionGzip) {
         })
     )
 }
-
 if (config.build.bundleAnalyzerReport) {
-  var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+    var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+    webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
-
 module.exports = webpackConfig

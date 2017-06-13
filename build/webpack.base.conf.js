@@ -6,11 +6,9 @@ var projectRoot = path.resolve(__dirname, '../')
 const os = require('os');
 const HappyPack = require('happypack');
 const happThreadPool = HappyPack.ThreadPool({size: os.cpus().length}); // 采用多进程，进程数由CPU核数决定
-
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+function resolve(dir) {
+    return path.join(__dirname, '..', dir)
 }
-
 module.exports = {
     cache: true, // 开启webpack的默认缓存
     entry: config.project_config.project, // 根据不同的入口生成对应的app.js
@@ -50,7 +48,7 @@ module.exports = {
             {
                 test: /\.js$/,
                 loader: ['happypack/loader?id=js'], // 将loader换成happypack
-                include: [  path.join(projectRoot, 'src')],
+                include: [path.join(projectRoot, 'src')],
                 exclude: [path.join(projectRoot, 'node_modules')]
             },
             {

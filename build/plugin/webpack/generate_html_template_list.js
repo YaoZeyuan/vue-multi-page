@@ -1,7 +1,6 @@
 "use strict"
 let config = require('../../../config')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
-
 // 生成html模版配置
 // 传入参数env : 当前环境配置信息
 exports.generate_html_template_list = function (env) {
@@ -36,7 +35,6 @@ exports.generate_html_template_list = function (env) {
                 }
                 return chunks;
             }(project),
-
             chunksSortMode: 'dependency',// 按照依赖关系注入script标签，否则【一定】会造成代码无法运行！
         }
         template_list.push(

@@ -5,7 +5,6 @@
 let cwd = process.cwd();
 let path = require('path');
 let fs = require('fs');
-
 let tool = {
     create_path_sync: function (dir_path, mode) {
         // 根据字符串形式的路径创建文件夹
@@ -17,7 +16,7 @@ let tool = {
         // 将路径按分隔符拆分
         dir_path.split(path.sep).forEach(function (sub_dir) {
             // 依次检查每一级文件夹是否存在，存在跳过，不存在创建之
-            if(sub_dir == '') {
+            if (sub_dir == '') {
                 // 注意，这里有个特殊情况
                 // Linux下路径为/home/user/etc,这样分隔之后，第一个路径就是空。。。会导致报错退出，所以需要特殊处理一下
                 // 痛心疾首。。。
@@ -33,7 +32,6 @@ let tool = {
         return true;
     },
 }
-
 exports.generate_map_json = function (config) {
     config = config || {};
     let assetsPath = config.assetsPath || '';
@@ -45,17 +43,11 @@ exports.generate_map_json = function (config) {
             let assets = json.assets;
             // 初始化变量
             let map = {
-                'js':{
-                    'min':{
-
-                    },
-                    'debug':{
-
-                    },
+                'js': {
+                    'min': {},
+                    'debug': {},
                 },
-                'css':{
-
-                }
+                'css': {}
             };
             assets.forEach(function (item) {
                 // 为编译后的文件逐个生成map路径映射
@@ -70,24 +62,21 @@ exports.generate_map_json = function (config) {
                 let uri = ext_suffix == '.js' ? '/js/' : '/css/';
                 uri += filename + ext_suffix;
                 let file_real_path = assetsPath + '/' + compiled_uri; // \ 在windows上也可以被正确识别，所以直接使用下划线人工合成路径即可
-                if(ext_suffix == '.js'){
+                if (ext_suffix == '.js') {
                     map['js']['min'][uri] = file_real_path
                     map['js']['debug'][uri] = file_real_path
-                }else {
+                } else {
                     // 一定是js/css两者之一
                     map['css'][uri] = file_real_path
                 }
             });
-
             let webpackOutputFile = path.join(this.outputPath, 'map.json');
             let outputFile = output ? path.resolve(cwd, output) : webpackOutputFile;
             let outputDir = path.dirname(outputFile);
             tool.create_path_sync(outputDir); // 根据输入路径直接建立一系列文件夹
-
             // @todo 这里需要额外读取src/assert文件夹下的文件，font/img/medis里的文件也要生成对应的map.json
             // @todo 或者，只要加一个静态资源目录即可
             map['static_root'] = static_root; // 静态资源路径,所有的静态资源都在此路径下,由前端自行拼接即可
-
             fs.writeFileSync(outputFile, JSON.stringify(map, null, 2));
         });
     }
