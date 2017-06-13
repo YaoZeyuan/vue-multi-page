@@ -1,12 +1,12 @@
 "use strict"
-var config = require('../config')
-var webpack = require('webpack')
-var merge = require('webpack-merge')
 var utils = require('./utils')
+var webpack = require('webpack')
+var config = require('../config')
+var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var html_template_generator = require('./plugin/webpack/generate_html_template_list')
 var env = config.dev.env
-var FriendlyErrors = require('friendly-errors-webpack-plugin')
+var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
 // 这里有一个问题，因为js里是按引用传递的，所以如果按照原先的做法直接对baseWebpackConfig.entry进行操作
@@ -20,18 +20,17 @@ baseWebpackConfig.entry = project_list
 
 module.exports = merge(baseWebpackConfig, {
     module: {
-        loaders: utils.styleLoaders({sourceMap: config.dev.cssSourceMap})
+    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
     },
     // eval-source-map is faster for development
-    devtool: '#cheap-source-map', // eval-source-map只能看，不能调试，得不偿失
+    devtool: '#cheap-module-source-map', // eval-source-map只能看，不能调试，得不偿失
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': env
+      'process.env': config.dev.env
         }),
         // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
-        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         // https://github.com/ampedandwired/html-webpack-plugin
-    ].concat(html_template_generator.generate_html_template_list(env)).concat([new FriendlyErrors()]) // 不能用push,push的返回值是数组的长度，不是数组本身。。。
+    ].concat(html_template_generator.generate_html_template_list(config.dev.env)).concat([new FriendlyErrorsPlugin()]) // 不能用push,push的返回值是数组的长度，不是数组本身。。。
 })
