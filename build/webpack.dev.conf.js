@@ -4,7 +4,7 @@ const webpack = require('webpack')
 const config = require('../config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
-const html_template_generator = require('./plugin/webpack/generate_html_template_list')
+let html_template_generator = require('./plugin/webpack/generate_html_template_list')
 const env = config.dev.env
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
@@ -32,5 +32,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
-  ].concat(html_template_generator.generate_html_template_list(config.dev.env)).concat([new FriendlyErrorsPlugin()]) // 不能用push,push的返回值是数组的长度，不是数组本身。。。
+  ].concat(
+    html_template_generator.generate_html_template_list(config.dev.env)
+  ).concat([new FriendlyErrorsPlugin()]) // 不能用push,push的返回值是数组的长度，不是数组本身。。。
 })

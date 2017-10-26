@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.0",
+    "webpack-uglify-parallel": "^0.1.4"
   },
   "devDependencies": {
     "cross-env": "^1.0.6",
