@@ -11,7 +11,9 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "axios": "^0.17.0",
     "vue": "^2.5.2",
+    "vue-jsonp": "^0.1.6",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.0",
     "webpack-uglify-parallel": "^0.1.4"
