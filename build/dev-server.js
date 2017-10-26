@@ -30,6 +30,7 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
   stats: {
     colors: true,
     chunks: false,
+    modules:false, // 不用显示那一串涉及到的module列表，没有意义。相关文档地址:https://webpack.js.org/configuration/stats/
     inline: true,// 当源代码改变时，自动刷新页面，通过强制刷新来避免代码修改后页面没跟着热加载的情况
   },
   progress: true

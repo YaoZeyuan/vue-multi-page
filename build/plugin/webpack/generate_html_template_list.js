@@ -1,6 +1,7 @@
-"use strict"
+'use strict'
 let config = require('../../../config')
 let HtmlWebpackPlugin = require('html-webpack-plugin')
+
 // 生成html模版配置
 // 传入参数env : 当前环境配置信息
 exports.generate_html_template_list = function (env) {

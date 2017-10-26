@@ -10,7 +10,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var html_template_generator = require('./plugin/webpack/generate_html_template_list')
 var map_json_generator = require('./plugin/webpack/generate_map_json')
-const UglifyJsparallelPlugin = require('webpack-uglify-parallel')
+const UglifyJsParallelPlugin = require('webpack-uglify-parallel')
 const os = require('os')
 
 const env = config.build.env
@@ -25,8 +25,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name]_[chunkhash]/[name].js'), //让生成的js按文件名分开，方便查找
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
+    filename: utils.assetsPath('js/[name]_[chunkhash:7]/[name].js'), //让生成的js按文件名分开，方便查找
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash:7].js'),
     //publicPath : config.project_config.static_root + "/",// 静态资源地址
   },
   plugins: [
@@ -35,13 +35,18 @@ const webpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     // 混淆，压缩代码
-    new UglifyJsparallelPlugin({
-      // 多进程压缩js，可以将编译速度提高三倍
+    new UglifyJsParallelPlugin({
+      // 多进程压缩js，可以将编译速度提高三倍.
+      // 需要注意的是多进程不利于查看bug日志，如果出现编译bug的话需要换成普通模式debug
       workers: os.cpus().length,
+      // 最紧凑的输出
+      beautify: false,
+      // 删除所有的注释
+      comments: false,
       compress: {
-        warnings: false,
+        warnings: false
       },
-      sourceMap: true
+      sourceMap: false
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     // 用于将css单独打包到一个文件内，但因为现在不单独生成css，所以可以注掉
