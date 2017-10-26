@@ -1,6 +1,9 @@
-"use strict"
+
+'use strict'
+// Template version: 1.1.3
 // see http://vuejs-templates.github.io/webpack for documentation.
-let path = require('path')
+
+const path = require('path')
 let project_config = require('./project.js'); // 在配置生成路径时需要project_config中的相关信息，故预先导入
 module.exports = {
     build: {
