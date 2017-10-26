@@ -1,13 +1,14 @@
 {
   "name": "muilt-page-vue",
   "version": "1.0.0",
-  "description": "vue多页面架构第三版",
+  "description": "vue多页面框架(基于webpack3)",
   "author": "姚泽源 <yaozeyuan93@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "npm run dev",
     "build": "node build/build.js",
+    "analyze": "npm run build --report",
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
