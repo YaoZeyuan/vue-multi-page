@@ -1,2 +1,6 @@
 build/*.js
 config/*.js
+dist/*
+map/*
+standalone/*
+src/assets/*

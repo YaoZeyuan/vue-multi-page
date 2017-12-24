@@ -3,6 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+let projectRoot = path.resolve(__dirname, '../')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -10,7 +11,7 @@ function resolve (dir) {
 
 module.exports = {
   cache: true, // 开启webpack的默认缓存
-  entry: config.project_config.project, // 根据不同的入口生成对应的app.js
+  entry: config.projectConfig.project, // 根据不同的入口生成对应的app.js
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -23,21 +24,20 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       'src': path.resolve(__dirname, '../src'),
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'assets': path.resolve(__dirname, '../src/assets')
     }
   },
   module: {
     rules: [
-      {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: [resolve('src'), resolve('test')],
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
+      // {
+      //   test: /\.(js|vue)$/,
+      //   loader: 'eslint-loader',
+      //   enforce: 'pre',
+      //   include: [resolve('src'), resolve('test')],
+      //   options: {
+      //     formatter: require('eslint-friendly-formatter')
+      //   }
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -45,8 +45,9 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        loader: ['babel-loader?cacheDirectory=true'],
+        include: [path.join(projectRoot, 'src')],
+        exclude: [path.join(projectRoot, 'node_modules')]
       },
       {
         // 图片资源处理器

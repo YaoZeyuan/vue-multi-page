@@ -19,7 +19,7 @@ const port = process.env.PORT || config.dev.port
 const autoOpenBrowser = !!config.dev.autoOpenBrowser
 // Define HTTP proxies to your custom API backend
 // https://github.com/chimurai/http-proxy-middleware
-const proxyTable = config.dev.proxyTable
+// const proxyTable = config.dev.proxyTable
 
 const app = express()
 const compiler = webpack(webpackConfig)
@@ -30,8 +30,8 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
   stats: {
     colors: true,
     chunks: false,
-    modules:false, // 不用显示那一串涉及到的module列表，没有意义。相关文档地址:https://webpack.js.org/configuration/stats/
-    inline: true,// 当源代码改变时，自动刷新页面，通过强制刷新来避免代码修改后页面没跟着热加载的情况
+    modules: false, // 不用显示那一串涉及到的module列表，没有意义。相关文档地址:https://webpack.js.org/configuration/stats/
+    inline: true // 当源代码改变时，自动刷新页面，通过强制刷新来避免代码修改后页面没跟着热加载的情况
   },
   progress: true
 })
@@ -55,13 +55,15 @@ const hotMiddleware = require('webpack-hot-middleware')(compiler, {
 app.use(hotMiddleware)
 
 // proxy api requests
-Object.keys(proxyTable).forEach(function (context) {
-  let options = proxyTable[context]
-  if (typeof options === 'string') {
-    options = {target: options}
-  }
-  app.use(proxyMiddleware(options.filter || context, options))
-})
+// Object.keys(proxyTable).forEach(function (context) {
+//   let options = proxyTable[context]
+//   if (typeof options === 'string') {
+//     options = {target: options}
+//   }
+//   app.use(proxyMiddleware(options.filter || context, options))
+// })
+// 本地调试vue的时候会有跨域问题，所以这里自定义一个过滤器进行检测，命中规则就自动转发到接口地址上去
+app.use(proxyMiddleware(config.localServer.filter, config.localServer.host))
 
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
@@ -75,10 +77,11 @@ app.use(staticPath, express.static('./static'))
 
 const uri = 'http://localhost:' + port
 // 直接打开最新添加的项目,方便调试
-let project_list = config.project_config.project
-let lasted_project_index = Object.keys(project_list).length - 1
-let lasted_project_uri = uri + '/' + config.project_config.static_root + '/html/' + Object.keys(project_list)[lasted_project_index] + '/index.html'
-console.log(`lasted_project_uri => ${lasted_project_uri}`)
+let projectList = config.projectConfig.project
+let lastedProjectIndex = Object.keys(projectList).length - 1
+let lastedProjectUri = uri + '/' + config.projectConfig.staticRoot + '/html/' + Object.keys(projectList)[lastedProjectIndex] + '/index.html'
+console.log(`lasted_project_uri => ${lastedProjectUri}`)
+
 var _resolve
 var _reject
 var readyPromise = new Promise((resolve, reject) => {
@@ -97,10 +100,10 @@ devMiddleware.waitUntilValid(() => {
       _reject(err)
     }
     process.env.PORT = port
-    console.log('> Listening at ' + lasted_project_uri + '\n')
+    console.log('> Listening at ' + uri + '\n')
     // when env is testing, don't need open it
     if (autoOpenBrowser && process.env.NODE_ENV !== 'testing') {
-      opn(lasted_project_uri)
+      opn(lastedProjectUri)
     }
     server = app.listen(port)
     _resolve()
