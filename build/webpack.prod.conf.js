@@ -8,12 +8,22 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-var html_template_generator = require('./plugin/webpack/generate_html_template_list')
-var map_json_generator = require('./plugin/webpack/generate_map_json')
+var htmlTemplateGenerator = require('./plugin/webpack/generate_html_template_list')
+var mapJsonGenerator = require('./plugin/webpack/generate_map_json')
 const UglifyJsParallelPlugin = require('webpack-uglify-parallel')
 const os = require('os')
 
 const env = config.build.env
+
+// 添加'babel-polyfill', 以便兼容安卓4.4以下的版本
+// 这里有一个问题，因为js里是按引用传递的，所以如果按照原先的做法直接对baseWebpackConfig.entry进行操作
+// 会导致config.project里的配置也会随之变化，导致后续代码出错
+// 因此需要单独创建一个变量，避免污染config配置
+let projectList = {}
+Object.keys(config.projectConfig.project).forEach(function (name) {
+  projectList[name] = ['babel-polyfill'].concat(config.projectConfig.project[name])
+})
+baseWebpackConfig.entry = projectList
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -25,9 +35,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name]_[chunkhash:7]/[name].js'), //让生成的js按文件名分开，方便查找
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash:7].js'),
-    //publicPath : config.project_config.static_root + "/",// 静态资源地址
+    filename: utils.assetsPath('js/[name]_[chunkhash:7]/[name].js'), // 让生成的js按文件名分开，方便查找
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash:7].js')
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
@@ -48,10 +57,16 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       sourceMap: false
     }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //     compress: {
+    //         warnings: false
+    //     },
+    //     sourceMap: true
+    // }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     // 用于将css单独打包到一个文件内，但因为现在不单独生成css，所以可以注掉
     new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css')
+      filename: utils.assetsPath('css/[name]_[contenthash:7]/[name].css')
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -59,11 +74,11 @@ const webpackConfig = merge(baseWebpackConfig, {
       cssProcessorOptions: {
         safe: true
       }
-    }),
-  ].concat(html_template_generator.generate_html_template_list(env)).concat([
+    })
+  ].concat(htmlTemplateGenerator.generateHtmlTemplateList(env)).concat([
     // 只生成一个js文件
     // split vendor js into its own file
-    //new webpack.optimize.CommonsChunkPlugin({
+    // new webpack.optimize.CommonsChunkPlugin({
     //  name: 'vendor',
     //  minChunks: function (module, count) {
     //    // any required modules inside node_modules are extracted to vendor
@@ -75,27 +90,29 @@ const webpackConfig = merge(baseWebpackConfig, {
     //      ) === 0
     //    )
     //  }
-    //}),
+    // }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
-    //new webpack.optimize.CommonsChunkPlugin({
+    // new webpack.optimize.CommonsChunkPlugin({
     //  name: 'manifest',
     //  chunks: ['vendor']
-    //}),
+    // }),
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        // 配置静态文件路径
+        from: path.resolve(__dirname, '../standalone'),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
     ]),
     // map.json插件
-    map_json_generator.generate_map_json({
+    mapJsonGenerator.generateMapJson({
+      version: config.projectConfig.version,
       // output file path, relative to process.cwd()
-      output: './map/' + config.project_config.name + '/map-' + config.project_config.version + '.json',
+      output: './map/' + config.projectConfig.name + '/map_' + config.projectConfig.version + '.json',
       assetsPath: config.build.assetsPublicPath, // 文件前缀地址
-      static_root: config.project_config.static_root, // 静态资源根路径
+      staticRoot: config.projectConfig.staticRoot // 静态资源根路径
     })
   ])
 })
