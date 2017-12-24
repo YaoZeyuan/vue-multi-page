@@ -11,8 +11,8 @@ const ChildProcess = require('child_process')
 let projectConfig = {
   name: 'multi_vue_demo',
   vcsType: VcsTypeGit, // 设定版本控制工具，用于自动获取版本号
-  version: 'undefined',
-  staticRoot: '', // 该值由name和version自动生成
+  version: 'undefined', // 如果使用hg/git进行的版本控制的话, 不需要填写该项, 由脚本自动检测tag即可
+  staticRoot: '', // 不需要填写, 由name和version自动生成
   project: {
     // 项目列表
 

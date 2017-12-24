@@ -10,6 +10,33 @@ vue作为单页面应用已经无可挑剔，但在实际应用的时候，我�
 
 预祝vue愉快
 
+#   直接使用
+
+##  支持命令:
+    1.  `npm run dev` / `npm run start` => 启动本地开发服务器
+    2.  `npm run build` => 本地打包
+    3.  `npm run publish` => 线上打包(相关cdn配置在\config\cdn.js里)
+    4.  `npm run publish_rd` => 为rd环境打包, 如果没有rd环境可以直接忽略(相关cdn配置在\config\cdn.js里)
+    5.  `npm run analyze` => 以可视化的方式展示出每个包的大小, 方便进行体积优化
+
+##  配置文件说明:
+    1.  debug.js_
+        1.  使用前需要先把后缀改为`js`. 主要为了方便开发人员自定义配置.
+        2.  目前支持自定义`run dev`时的以下选项
+            1.  本地端口号 => `devPort`
+            2.  本地服务器配置 => `localServer`
+                1,  端口转发规则(例如, 按关键字转发接口) => `filter`
+                2.  端口转发地址 => `host.target`
+            3.  本地调试时编译的项目
+                1.  本地调试时往往只需要编译一个项目, 所以可以在dev的`project`里进行指定, 以加快编译速度
+    2.  cdn.js
+        1.  cdn相关配置, 可以在这个文件中指定map.json中对应的静态文件前缀和发布时的账号密码, 方便针对不同环境进行发布操作
+    3.  project.js
+        1.  核心配置文件, 需要预先指定项目名和版本控制工具, 以便根据当前项目的tag输出相应配置
+        2.  `project` => 在这里配置所有需要编译的项目
+
+#   项目说明
+
 ##  实现思路
 
 1.  通过vue-cli，搭建出一套基础的vue框架
@@ -41,7 +68,7 @@ vue作为单页面应用已经无可挑剔，但在实际应用的时候，我�
     2.  npm
         1.  npm配置
             1.  由于GFW的原因, 用npm默认源是基本没法下载代码包的，所以需要切换成淘宝的源
-                1.  执行命令  
+                1.  执行命令
                     ` npm config set registry="http://registry.npm.taobao.org" `
 
     3.  安装vue-cli
